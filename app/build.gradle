@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 30  // 使用你项目支持的 SDK 版本
     defaultConfig {
         applicationId "com.example.wifipasswordapp"
-        minSdkVersion 14
+        minSdkVersion 14  // 确保支持 Android 4.0 (API 14)
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
