@@ -17,19 +17,16 @@ jobs:
       uses: actions/cache@v2
       with:
         path: |
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
+          ~/.gradle/wrapper/
+        key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
 
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
         java-version: '11'
 
-    - name: Set up Gradle Wrapper
-      run: |
-        gradle wrapper
+    - name: Generate Gradle Wrapper
+      run: ./gradlew wrapper --gradle-version 7.4
 
     - name: Build with Gradle (with stacktrace)
       run: ./gradlew build --stacktrace
