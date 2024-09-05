@@ -18,13 +18,11 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Install Gradle (for creating wrapper)
-      run: |
-        sudo apt-get install -y gradle
+    - name: Remove old Gradle Wrapper
+      run: rm -rf gradle/wrapper
 
-    - name: Create Gradle Wrapper
-      run: |
-        gradle wrapper --gradle-version 7.4
+    - name: Generate new Gradle Wrapper
+      run: gradle wrapper --gradle-version 7.4
 
     - name: Build with Gradle (with stacktrace)
       run: ./gradlew build --stacktrace
