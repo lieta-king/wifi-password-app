@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TARGET_SSID = "Your_SSID";
+    private static final String TARGET_SSID = "666888";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
