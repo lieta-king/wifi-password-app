@@ -13,20 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Cache Gradle Wrapper
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/wrapper/
-        key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
         java-version: '11'
 
-    - name: Generate Gradle Wrapper
-      run: ./gradlew wrapper --gradle-version 7.4
+    - name: Install Gradle (for creating wrapper)
+      run: |
+        sudo apt-get install -y gradle
+
+    - name: Create Gradle Wrapper
+      run: |
+        gradle wrapper --gradle-version 7.4
 
     - name: Build with Gradle (with stacktrace)
       run: ./gradlew build --stacktrace
