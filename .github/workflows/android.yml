@@ -18,6 +18,10 @@ jobs:
       with:
         java-version: '11'
 
+    - name: Set up Gradle Wrapper
+      run: |
+        gradle wrapper
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug
 
